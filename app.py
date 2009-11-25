@@ -82,19 +82,22 @@ class intodatas:
     from datamodel import rossdatas
     iii = ''
     for i in range(0,per):
-      no = self.no + i
-      response = urllib2.urlopen('http://www.efincs.net/twe/print_product_info.php?products_id=%s' % no)
-      page = response.read()
-      html_code = page.decode('big5').encode('utf-8')
-      hp = MyHTMLParser()
-      hp.feed(html_code)
-      hp.close()
+      try:
+        no = self.no + i
+        response = urllib2.urlopen('http://www.efincs.net/twe/print_product_info.php?products_id=%s' % no)
+        page = response.read()
+        html_code = page.decode('big5').encode('utf-8')
+        hp = MyHTMLParser()
+        hp.feed(html_code)
+        hp.close()
 
-      for ii in hp.datas:
-        iii = iii + ii.decode('utf-8') + ','
+        for ii in hp.datas:
+          iii = iii + ii.decode('utf-8') + ','
 
-      rossdatas(datas = iii,datano = int(no),key_name = str(no)).put()
-      iii = ''
+        rossdatas(datas = iii,datano = int(no),key_name = str(no)).put()
+        iii = ''
+      except:
+        pass
 
     self.datasos.finalno = self.no + per + 1
     self.datasos.put()
