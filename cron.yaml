@@ -1,0 +1,4 @@
+cron:
+- description: cron user in data
+  url: /crondata
+  schedule: every 1 minutes

@@ -5,8 +5,14 @@ api_version: 1
 
 handlers:
 
+## cron
+- url: /crondata
+  script: crondata.py
+  #secure: always
+  login: admin
+
 ## Main WSGI
 - url: .*
-  script: d.py
+  script: first.py
   #secure: always
   #login: admin
