@@ -1,0 +1,12 @@
+application: isufinstudio
+version: 1
+runtime: python
+api_version: 1
+
+handlers:
+
+## Main WSGI
+- url: .*
+  script: d.py
+  #secure: always
+  #login: admin
