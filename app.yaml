@@ -13,6 +13,7 @@ handlers:
 
 ## Main WSGI
 - url: .*
-  script: first.py
+  #script: first.py
+  script: crondata.py
   #secure: always
   #login: admin

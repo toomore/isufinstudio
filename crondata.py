@@ -5,4 +5,5 @@
 # 98~516
 
 from app import intodatas
-a = intodatas().rungo()
+#a = intodatas().rungo()
+intodatas().rungo()
