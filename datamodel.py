@@ -1,14 +1,17 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 """ Data property. """
 
 from google.appengine.ext import db
 
-class rossdatas(db.Model):
+class rosst(db.Model):
 
-  datano = db.IntegerProperty()
-  datas = db.StringProperty()
+  datano = db.StringProperty()
+  datacno = db.StringProperty()
+  name = db.StringProperty()
+  phone = db.StringProperty()
+  fax = db.StringProperty()
+  addres = db.StringProperty()
+  mpo = db.StringProperty()
+  mso = db.StringProperty()
   created_at = db.DateTimeProperty(auto_now_add = True)
-
-class startno(db.Model):
-
-  finalno = db.IntegerProperty()
-  worked_at = db.DateTimeProperty(auto_now = True)
