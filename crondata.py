@@ -13,5 +13,6 @@ from datamodel import rosst
 a = rosst().all()
 print '123'
 print a.count()
-#for i in a:
+for i in a:
 #  i.delete()
+  print i.name.encode('utf-8')

@@ -14,4 +14,7 @@ class rosst(db.Model):
   addres = db.StringProperty()
   mpo = db.StringProperty()
   mso = db.StringProperty()
+  geostatus = db.StringProperty()
+  geoacc = db.StringProperty()
+  geolat = db.GeoPtProperty()
   created_at = db.DateTimeProperty(auto_now_add = True)

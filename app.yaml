@@ -11,13 +11,13 @@ handlers:
 
 ## cron
 - url: /crondata
-  script: crondata.py
+  script: first.py
   #secure: always
   login: admin
 
 ## Main WSGI
 - url: .*
-  #script: first.py
-  script: crondata.py
-  #secure: always
-  #login: admin
+  script: first.py
+  #script: crondata.py
+  secure: always
+  login: admin
