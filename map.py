@@ -80,7 +80,7 @@ class opmap(webapp.RequestHandler):
       b = []
       a = rosst.gql("where datacno = '%s' " % (q[self.request.get('q')]).decode('utf-8'))
       noc = a.count()
-      memcache.add(self.request.get('q'),noc,3600)
+      memcache.add(self.request.get('q'),noc,3600*6)
       logging.info('Add noc cache: %s' % noc)
       for i in a:
         try:
@@ -96,17 +96,25 @@ class opmap(webapp.RequestHandler):
         except:
           pass
 
-      memcache.add(self.request.get('q'),b,3600,namespace='njnj')
+      memcache.add(self.request.get('q'),b,3600*6,namespace='njnj')
       logging.info('Add cache: %s' % self.request.get('q'))
 
     self.response.headers['Content-Type'] = 'text/xml'
     self.response.out.write(template.render('./template/map.kml',{'b':b}))
 
+class flush(webapp.RequestHandler):
+  """ Output map.
+  """
+  def get(self):
+    memcache.flush_all()
+    self.redirect('/')
+
 def main():
   """ Start up. """
   application = webapp.WSGIApplication([
                                         ('/', index),
-                                        ('/map.kml', opmap)
+                                        ('/map.kml', opmap),
+                                        ('/flush', flush)
                                       ],debug=True)
   run_wsgi_app(application)
 

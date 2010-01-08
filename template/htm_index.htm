@@ -12,7 +12,9 @@
     var map = new google.maps.Map2(document.getElementById("map"));
     map.setCenter(new google.maps.LatLng(22.8016472, 120.2858846), 13);
     map.setUIToDefault();
+    map.enableContinuousZoom();
     map.addOverlay(geoXml);
+    geoXml.gotoDefaultViewport(map);
   }
   google.setOnLoadCallback(initialize);
 </script>
