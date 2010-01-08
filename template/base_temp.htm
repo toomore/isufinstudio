@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+        <title>{% block title %}{% endblock %} - 岡山鎮地方誌</title>
+        <meta name="description" content="Map">
+        <meta name="keywords" content="Google App Engine"> 
+        <link rel="stylesheet" type="text/css" href="/css/css.css">
+    </head>
+      {% block jv%}{% endblock %}
+    <body>
+      <div class="cc">
+        <div class="desc">{% include 'menu.htm' %} {{ menu }}</div>
+        <div class="descr">{{ login }}</div>
+      </div>
+      <div class="cc top"></div>
+      {% block content %}{% endblock %}
+      {% include 'h_desc.htm' %}
+    </body>
+</html>

@@ -1,0 +1,24 @@
+{% extends "base_temp.htm" %}
+
+{% block title %}{{ ti }}({{ noc }}){% endblock %}
+{% block jv %}
+<script type="text/javascript" src="http://www.google.com/jsapi?key=ABQIAAAAhOYTJ_D7BinxvFiT95rfOhT7WoXxOuoAYnnBf2r0f5gAS28JmxRtv-xcRDxRu7cDqwQcT9GZgIg72g"></script>
+<script type="text/javascript">
+  google.load("maps", "2.x",{"other_params":"sensor=false"});
+   
+  // Call this function when the page has been loaded
+  function initialize() {
+    var geoXml = new GGeoXml("http://isufinstudio.appspot.com/map.kml?q={{ qw }}");
+    var map = new google.maps.Map2(document.getElementById("map"));
+    map.setCenter(new google.maps.LatLng(22.8016472, 120.2858846), 13);
+    map.setUIToDefault();
+    map.addOverlay(geoXml);
+  }
+  google.setOnLoadCallback(initialize);
+</script>
+{% endblock %}
+
+{% block content %}
+<div id="map" style="width: 100%; height: 88%"></div>
+{% endblock %}
+

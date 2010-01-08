@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+<Document>
+  <name>Map</name>
+  <description><![CDATA[台灣岡山]]></description>
+  <Style id="style1">
+    <IconStyle>
+      <Icon>
+        <href>http://maps.gstatic.com/intl/en_ALL/mapfiles/ms/micons/blue-dot.png</href>
+      </Icon>
+    </IconStyle>
+  </Style>
+{% for u in b %}<Placemark>
+    <name>{{ u.name }}</name>
+    <description><![CDATA[ {{ u.addres }}<br>主要產品：{{ u.mpo }}<br>主要原料：{{ u.mso }} ]]></description>
+    <styleUrl>#style1</styleUrl>
+    <Point>
+      <coordinates>{{ u.lon }},{{ u.lat }},0.000000</coordinates>
+    </Point>
+  </Placemark>{% endfor %}
+</Document>
+</kml>

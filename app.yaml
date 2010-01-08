@@ -9,6 +9,13 @@ handlers:
   script: $PYTHON_LIB/google/appengine/ext/remote_api/handler.py
   login: admin
 
+## CSS
+- url: /css
+  static_dir: static/css
+- url: /css/(.*)
+  static_files: static/css/\1
+  upload: static/css/(.*)
+
 ## cron
 - url: /crondata
   script: first.py
@@ -17,7 +24,6 @@ handlers:
 
 ## Main WSGI
 - url: .*
-  script: first.py
-  #script: crondata.py
+  script: map.py
   secure: always
-  login: admin
+  #login: admin
