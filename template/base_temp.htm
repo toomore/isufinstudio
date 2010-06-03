@@ -7,7 +7,7 @@
         <link rel="stylesheet" type="text/css" href="/css/css.css">
     </head>
       {% block jv%}{% endblock %}
-    <body>
+    <body onload="initialize()">
       <div class="cc">
         <div class="desc">{% include 'menu.htm' %} {{ menu }}</div>
         <div class="descr">{{ login }}</div>
