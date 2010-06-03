@@ -31,7 +31,8 @@ class index(webapp.RequestHandler):
               '16':'電器及電子',
               '17':'運輸工具',
               '18':'精密器機',
-              '19':'雜項工業'
+              '19':'雜項工業',
+              '99':'All'
             }
     m = ''
     for t in q.keys():
@@ -71,14 +72,18 @@ class opmap(webapp.RequestHandler):
           '16':'電器及電子',
           '17':'運輸工具',
           '18':'精密器機',
-          '19':'雜項工業'
+          '19':'雜項工業',
+          '99':'All'
         }
 
     b = memcache.get(self.request.get('q'),'njnj')
 
     if b is None:
       b = []
-      a = rosst.gql("where datacno = '%s' " % (q[self.request.get('q')]).decode('utf-8'))
+      if self.request.get('q') == '99':
+        a = rosst.all()
+      else:
+        a = rosst.gql("where datacno = '%s' " % (q[self.request.get('q')]).decode('utf-8'))
       noc = a.count()
       memcache.add(self.request.get('q'),noc,3600*6)
       logging.info('Add noc cache: %s' % noc)
