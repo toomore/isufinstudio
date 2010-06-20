@@ -85,7 +85,7 @@ class opmap(webapp.RequestHandler):
       else:
         a = rosst.gql("where datacno = '%s' " % (q[self.request.get('q')]).decode('utf-8'))
       noc = a.count()
-      memcache.add(self.request.get('q'),noc,3600*6)
+      memcache.add(self.request.get('q'),noc)
       logging.info('Add noc cache: %s' % noc)
       for i in a:
         try:
@@ -101,7 +101,7 @@ class opmap(webapp.RequestHandler):
         except:
           pass
 
-      memcache.add(self.request.get('q'),b,3600*6,namespace='njnj')
+      memcache.add(self.request.get('q'),b,namespace='njnj')
       logging.info('Add cache: %s' % self.request.get('q'))
 
     self.response.headers['Content-Type'] = 'text/xml'

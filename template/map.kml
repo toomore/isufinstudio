@@ -3,17 +3,17 @@
 <Document>
   <name>Map</name>
   <description><![CDATA[台灣岡山鎮地方誌]]></description>
-  <Style id="style1">
+  <Style id="style99">
     <IconStyle>
       <Icon>
-        <href>http://maps.gstatic.com/intl/en_ALL/mapfiles/ms/micons/blue-dot.png</href>
+        <href>https://isufinstudio.appspot.com/img/factory.png</href>
       </Icon>
     </IconStyle>
   </Style>
 {% for u in b %}<Placemark>
     <name>{{ u.name }}</name>
     <description><![CDATA[ {{ u.addres }}<br>主要產品：{{ u.mpo }}<br>主要原料：{{ u.mso }} ]]></description>
-    <styleUrl>#style1</styleUrl>
+    <styleUrl>#style99</styleUrl>
     <Point>
       <coordinates>{{ u.lon }},{{ u.lat }},0.000000</coordinates>
     </Point>

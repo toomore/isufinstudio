@@ -16,6 +16,13 @@ handlers:
   static_files: static/css/\1
   upload: static/css/(.*)
 
+## IMG
+- url: /img
+  static_dir: static/img
+- url: /img/(.*)
+  static_files: static/img/\1
+  upload: static/img/(.*)
+
 ## cron
 - url: /crondata
   script: first.py
